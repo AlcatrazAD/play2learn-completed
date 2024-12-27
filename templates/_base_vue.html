@@ -31,6 +31,9 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href=" {% url 'account_login' %} ">Log In</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="">Score</a>
             </li>
             <li class="nav-item">
@@ -45,8 +48,8 @@
             <li class="nav-item">
               <form method="post" action="{% url 'account_logout' %}">
                 {% csrf_token %}
-                <button class="btn dropdown-item">Log in</button>
-              </form>>Log out</a>
+                <button class="btn dropdown-item">Log out</button>
+              </form>
             </li>
           </ul>
         </div>
@@ -63,6 +66,11 @@
           <ul class="nav">
             <li class="nav-item"><a class="nav-link" href="{% url 'pages:about' %}">About</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'pages:contact' %}">Contact</a></li>
+            {% if user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+          {% endif %}
           </ul>
         </nav>
       </div>
