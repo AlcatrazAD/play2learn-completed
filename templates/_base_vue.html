@@ -37,13 +37,16 @@
               <a class="nav-link" href="#">My Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Anagram</a>
+              <a class="nav-link" href="templates/games/anagram-hunt.html">Anagram</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Math Facts</a>
+              <a class="nav-link" href="templates\games\math-facts.html">Math Facts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Log in</a>
+              <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button class="btn dropdown-item">Log in</button>
+              </form>>Log out</a>
             </li>
           </ul>
         </div>
