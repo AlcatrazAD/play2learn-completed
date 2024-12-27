@@ -1,13 +1,29 @@
-from django.urls import reverse_lazy
-from django.views.generic import FormView, TemplateView
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.conf import settings
 
-from .forms import ContactForm
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
 
-class ContactView(FormView):
-    template_name = 'pages/contact.html'
-    form_class = ContactForm
-    success_url = reverse_lazy('contact:thanks')
+        # Validation (optional)
+        if not name or not email or not message:
+            messages.error(request, 'All fields are required.')
+        else:
+            # Send email
+            send_mail(
+                subject=f"Contact Form Submission from {name}",
+                message=message,
+                from_email=email,
+                recipient_list=[settings.EMAIL_HOST_USER],  # Your email
+            )
+            messages.success(request, 'Your message has been sent successfully!')
+            return HttpResponseRedirect('/contact/')  # Reload to clear the form
 
-class ContactThankView(TemplateView):
-    template_name = 'contact/thanks.html'
-   
+    return render(request, 'contact.html')
+
+    
