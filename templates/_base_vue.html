@@ -27,7 +27,7 @@
           <ul class="navbar-nav me-auto">
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'pages:homepage' %}">Home 
-                <span class="sr-only">(current)</span>
+                <span class="sr-only"></span>
               </a>
             </li>
             <li class="nav-item">
@@ -40,10 +40,10 @@
               <a class="nav-link" href="{% url 'my_account' %}">My Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="templates/games/anagram-hunt.html">Anagram</a>
+              <a class="nav-link" href="{% url 'games:anagram-hunt'  %}">Anagram</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="templates\games\math-facts.html">Math Facts</a>
+              <a class="nav-link" href="{% url 'games:math-facts'  %}">Math Facts</a>
             </li>
             <li class="nav-item">
               <form method="post" action="{% url 'account_logout' %}">
@@ -66,11 +66,11 @@
           <ul class="nav">
             <li class="nav-item"><a class="nav-link" href="{% url 'pages:about' %}">About</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'pages:contact' %}">Contact</a></li>
-            {% if user.is_staff %}
+            
             <li class="nav-item">
-              <a class="nav-link" href="/admin/">Admin</a>
+              <a class="nav-link" href="http://127.0.0.1:8000/admin/.">Admin</a>
             </li>
-          {% endif %}
+          
           </ul>
         </nav>
       </div>

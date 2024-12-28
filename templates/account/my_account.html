@@ -3,7 +3,7 @@
 
 {% block title %}My Account{% endblock title %}
 
-{% block main %}
+{% block main %} 
 <div class="card border-primary m-auto mb-3" style="max-width: 30rem">
   <div class="card-header text-center">My Account</div>
   <div class="card-body">
@@ -17,3 +17,4 @@
     <p><a href="{% url 'account_change_password' %}">Change Password</a></p>
   </div>
 </div>
+{% endblock main %}

@@ -8,5 +8,5 @@ class CustomUser(AbstractUser):
     )
     
     def get_absolute_url(self):
-        return reverse('my-account')
+        return reverse('my_account')
     

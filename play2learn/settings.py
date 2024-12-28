@@ -104,13 +104,14 @@ DATABASES = {
 }
 
 # EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
-DEFAULT_FROM_EMAIL = 'admin@example.com'
+DEFAULT_FROM_EMAIL = 'Ziiondrianrose@gmail.com'
 
 
 
@@ -161,6 +162,8 @@ ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
 ACCOUNT_USERNAME_REQUIRED = False # Default: True
 
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
