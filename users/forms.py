@@ -3,6 +3,16 @@ from datetime import datetime
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm
+from .models import Review
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['title', 'content', 'rating']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4}),
+        }
+
 
 
 BIRTH_YEAR_CHOICES = range(1915, datetime.now().year)

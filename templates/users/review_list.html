@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+</head>
+<body>
+    <h1>User Reviews</h1>
+    <ul>
+        {% for review in reviews %}
+        <li>
+            <h2>{{ review.title }} ({{ review.rating }}/5)</h2>
+            <p>{{ review.content }}</p>
+            <small>By {{ review.user.username }} on {{ review.created_at|date:"F j, Y" }}</small>
+        </li>
+        {% empty %}
+        <p>No reviews yet. Be the first to leave a review!</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

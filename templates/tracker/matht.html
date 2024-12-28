@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Game Progress</title>
+</head>
+<body>
+    <h1>Track Progress for {{ game.math-facts }}</h1>
+    <p>{{ game.description }}</p>
+
+    <h2>Your Progress</h2>
+    <p>Score: {{ progress.score }}</p>
+    <p>Level: {{ progress.level }}</p>
+    <p>Last Played: {{ progress.last_played }}</p>
+
+    <h2>Update Progress</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="score">Add Score:</label>
+            <input type="number" name="score" id="score" min="0" placeholder="Score">
+        </div>
+        <div>
+            <label for="level">Update Level:</label>
+            <input type="number" name="level" id="level" min="1" placeholder="Level">
+        </div>
+        <button type="submit">Update Progress</button>
+    </form>
+
+    <a href="{% url 'games:game_list' %}">Back to Games</a>
+</body>
+</html>
